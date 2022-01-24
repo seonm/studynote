@@ -36,4 +36,12 @@ xcode설치시 git이 자동으로 설치된다.
   git config --list
 
 
+## 05. repository 
+![repository 생성](./newRepository.png)
+![repository 생성2](./newRepository2.png)
+repository > setting > danger zone
+![repository 삭제](./delete.png)
+
+
+
 
