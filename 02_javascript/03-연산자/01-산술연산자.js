@@ -1,10 +1,12 @@
 // 1. 사칙연산 출력하기
 const a = 5;
-const b = 3;
+const b = 1;
 
-console.log(a + b); // 8
-console.log(a - b); // 2
-console.log(a * b); // 15
+console.log(a + b) // 더하기 6
+console.log(a - b) // 빼기 4
+console.log(a * b) // 곱하기 5
+console.log(a / b) // 나누기 5
+console.log(a % b) // 나머지 0
 
 // 2. 연산 결과를 다른 변수에 할당
 const x = 5;

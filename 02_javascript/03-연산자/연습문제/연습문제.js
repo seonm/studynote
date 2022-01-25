@@ -25,11 +25,34 @@
 // const bag = numOfApples / 10;
 // const bagNum = numOfApples % 10 == 0 ? bag : bag + 1;
 // console.log(parseInt(bagNum));
+/* 풀이 */
+// const numOfApples = 123;
+
+// //10으로 나눈 나머지를 소수점 값으로 환산
+// const extra = (numOfApples % 10) / 10;
+
+//방법1
+//const basketCount = extra > 0 ? (numOfApples / 10) - extra + 1 : (numOfApples / 10) - extra;
+
+//방법2
+// let basketCount = (numOfApples / 10) - extra;
+// basketCount += extra > 0 ? 1 : 0;
+
+// console.log(basketCount)
+
 
 //Q4
 /*어떤 계산기는 입력된 값에서 백의자리 이하를 버리고 결과를 도출한다고 한다. 
 예를 들어 입력된 값이 456이라면 400이 결과로 출력된다. 이러한 출력결과를 만들 수 있는 코드를 작성하시오.*/
-const a = 234;
-const num = (Math.floor(a / 100) * 100);
+// const a = 234;
+// const num = Math.floor(a / 100) * 100;
 
-console.log(num);
+// console.log(num);
+
+//풀이
+const number = 457;
+
+// 100단위에 대한 나머지값을 소수점으로 구하기
+const extra = (number % 100) / 100;
+const result = ((number / 100) - extra) * 100;
+console.log(result)
