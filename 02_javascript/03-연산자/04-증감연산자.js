@@ -21,13 +21,13 @@ console.log(selfMinus); // -1
 // 3. 전위 증감 연산자
 let prevValue = 1;
 let prevResult = 100 + ++prevValue;
-
+//prevValue를 먼저 1 증가 시키고 전체 수식을 처리한다.(앞북)
 console.log(prevResult); // 102
 console.log(prevValue); // 2
 
 // 4. 후위 증감 연산자
 let nextValue = 1;
 let nextResult = 100 + nextValue++
-
+//100+nextValue를 먼저 처리하고 나중에서야 nextValue가 1 증가한다.(뒷북)
 console.log(nextResult); // 101
 console.log(nextValue); // 2
