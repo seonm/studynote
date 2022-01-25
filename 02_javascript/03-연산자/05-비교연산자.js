@@ -44,6 +44,8 @@ console.group('2. 같다.')
 
 console.groupEnd()
 
+
+//3. 다르다
 console.group('3. 다르다.')
 
     console.group('!= 내용만 비교')
