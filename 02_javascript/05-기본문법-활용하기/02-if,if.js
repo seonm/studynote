@@ -1,15 +1,16 @@
 const point = 78;
 
 if (point >= 70) {
-  console.log("Pass입니다.");
+  console.log('Pass입니다.');
 
   if (point > 90) {
-    console.log("A");
+    console.log('A');
   } else if (point > 80) {
-    console.log("B");
+    console.log('B');
   } else {
-    console.log("C");
+    console.log('C');
   }
+  
 } else {
-  console.log("NonPass 입니다.");
+  console.log('NonPass 입니다.');
 }
