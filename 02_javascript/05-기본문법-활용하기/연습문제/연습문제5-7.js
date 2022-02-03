@@ -30,6 +30,17 @@ for(let i=0; i<4; i++){
     console.log(a)
 
 }
+
+// 다른 해석
+// for(let i = 0; i < 4; i++){
+//     let box = '';
+  
+//     for(let j = i; j < 4 + i; j++){
+//       box += j
+//     } 
+//     console.log(box)
+//   }
+
 // ![Q5 손해설](./Q5-손해설.jpeg)
 
 // ## 문제 6.
