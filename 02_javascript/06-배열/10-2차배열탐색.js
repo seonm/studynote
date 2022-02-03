@@ -9,14 +9,15 @@ console.log(myArr.length);//2
 console.log(myArr[0].length)//3
 console.log(myArr[1].length)//3
 
-//2차 배열을 반복문으로 탐색할 때는 2중 반복문이 사용된다.
+//2차 배열의 요소 전체를 반복문으로 탐색할 때는 2중 반복문이 사용된다.
 //바깥의 반복문은 행을 담당
-for(let i=0; i < myArr.length; i++){
-  let str = '' // 빈 문자열은 나열, 숫자 0은 합계
+for(let i = 0; i < myArr.length; i++){
+  console.group(i + '번째 행')
+    console.log(myArr[i])
 
-  // 안쪽의 반복문은 i번째 행에 대한 열을 담당
-  for(let j=0;j <myArr[i].length;j++){
-    str += myArr[i][j]
-  }
-  console.log(str)
+    // 안쪽의 반복문은 i번째 행에 대한 열을 담당
+    for(let j = 0; j < myArr[i].length; j++){
+      console.log(myArr[i][j])
+    }
+  console.groupEnd();
 }

@@ -29,3 +29,21 @@ for (let i = 0; i < p; i++){
   data[k] = tmp;
 }
 console.log(data)
+
+
+//내가 푼 다른 방법
+// let N = [1, 12, 3, 5, 7, 8, 9];
+
+// //배열 뒤집기
+// let arrayN = [];
+// let a = N.length
+
+// for(let i = a-1; i >= 0; i--){
+//   arrayN += N[i]
+//   if(i > 0){
+//     arrayN += ' '
+//   }
+// }
+// N = arrayN.split(' ').map(Number)
+
+// console.log(N)
