@@ -70,10 +70,14 @@ const myjson = {
 ```
 
 ### 목록 구조
+> 배열안에 json들어갈 수 있고 json안에 배열이 들어갈 수도 있다.  
+> 데이터를 보고 json짜는 연습하기
 
 JSON의 value가 배열로 정의되어 있으면서, 각 배열의 원소가 또 다른 JSON 형식인 경우.
 
-단, 이 경우 배열의 원소로 포함되는 JSON 끼리는 동일한 구조를 갖는다.
+단, 관례상 이 경우 배열의 원소로 포함되는 JSON 끼리는 동일한 구조를 갖는다.
+
+
 
 ```javascript
 const 객체이름 = {
@@ -87,7 +91,23 @@ const 객체이름 = {
         key: value, key: value...
     } ]
 }
+// ex
+let classroom = {
+    teacher:{
+        name : '000',
+        age : 20 ,
+        //aga : 30
+    }
+    student:[
+        { name : '000', age : 20 },
+        { name : '000', age : 20 },
+        { name : '000', age : 20 }
+    ]
+}
+console.log(classroom.teacher.age); // 20
+
 ```
+
 
 
 ## #03. JSON 구조의 확장
@@ -104,4 +124,32 @@ const 객체이름 = {
 
 아무런 key도 정의되지 않은 빈 json 객체에 점진적으로 내용을 덧붙여 나갈 수 있다.
 
-## 통신프로토콜 : 데이터 통신 규격
+
+
+```js
+console.log(classroom.teacher.aga); // 오타 발생시 에러발생이 아니라 undefined가 출력된다.(버그발생)
+
+classroom.teacher.aga = 30 //없는곳에 데이터를 집어넣으면 해당요소가 생긴다.
+
+let classroom = {}
+classroom.a = 30;
+classroom.b = 30;
+classroom.c = 30;
+console.log(classroom)//{}
+
+const a = [];
+a[0] = 10;
+a[100] = 20;
+console.log(a)//
+console.log(a[50])//undefined
+
+
+```
+### 호이스팅
+function, var같은 함수 선언을 최상단으로 올리는 것
+
+###  통신프로토콜
+데이터 통신 규격
+
+### 메타데이터
+어떤 주제 데이터를 설명하기 위한 보조데이터

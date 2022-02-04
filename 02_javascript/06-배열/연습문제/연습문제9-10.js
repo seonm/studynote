@@ -8,11 +8,12 @@ const grade = [
   [54, 90, 80],
   [100, 99, 98]
 ];
-//총점과 평균 점수를 저장할 변수
+// 학생별 총점과 학생별 평균 점수를 저장할 변수
 let sum = 0, avg = 0;
 
 // 학생별 평균점수의 총 합
 let classSum = 0;
+
 // 반평균
 let classAvg = 0;
 
@@ -32,7 +33,10 @@ for(let i = 0; i < grade.length; i++){
   avg = sum / grade[i].length;
 
   // 반점수 구하기
-  classSum += avg
+  classSum += sum
+
+  // 반평균 구하기
+  classAvg += avg
 
   // 소수점 둘째자리까지 표현하기
   // toFixed()함수로 소수점을 처리한 결과는 문자열이기 때문에 숫자연산이 불가능하므로
@@ -44,9 +48,9 @@ for(let i = 0; i < grade.length; i++){
   
 }
 
-classAvg = classSum / student.length;
+classAvg = classAvg / student.length;
 classAvg.toFixed(2);
-console.log('반평균은 ' + classAvg + '점')
+console.log('반총점은 ' + classSum + ' 반평균은 ' + classAvg + '점')
 
 
 // 결과
