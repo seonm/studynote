@@ -8,24 +8,14 @@ covid19 = [
   {date: '0131', active: 338}, 
   {date: '0201', active: 299}
 ]
+// 전체 확진자 수를 위한 합계 변수
 let sum = 0;
-let avg = 0;
 
-let max = covid19[0]['active']
-let date = max.date
-
-for(let i in covid19){
-  //console.log(covid19[i]['active'])
-  sum += covid19[i]['active']
-
-  if(max < covid19[i]['active']){
-    max = covid19[i]
-  }
-
+for(const j of covid19){
+  sum += j.active;
 }
 avg = sum / covid19.length
 console.log('누적 확진자 수: '+ sum + '\n평균 확진자 수: '+ avg)
-console.log('확진자가 가장 많이 나타난 날 : '+ max['date'])
 
 
 
