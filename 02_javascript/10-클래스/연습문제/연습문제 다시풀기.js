@@ -43,3 +43,63 @@
 // ```
 // 둘레의 길이는 30이고 넓이는 50입니다.
 // ```
+
+// ## 문제2
+// 다음을 만족하는 Student 클래스를 작성하시오.
+
+// 1. String형의 학과와 정수형의 학번을 프로퍼티로로 선언후 생성자를 통해 주입
+// 2. getter, setter를 정의
+// 3. sayHello() 메서드를 통해 "나는 OOOO학과 OO학번 입니다." 를 출력하는 기능을 구현
+
+// ## 문제3.
+// 다음을 만족하는 클래스 Account를 작성하시오.(틀린문제)
+
+// 1. 다음의 2 개의 필드를 선언
+//     - 문자열 owner; (이름)
+//     - 숫자형 balance; (금액)
+// 1. 위 모든 필드에 대한 getter와 setter의 구현
+// 1. 위 모든 필드를 사용하는 가능한 모든 생성자의 구현
+// 1. 메소드 deposit()의 헤드는 다음과 같으며 인자인 금액을 저축하는 메소드
+//     - deposit(amount)
+// 1. 메소드 withdraw()의 헤드는 다음과 같으며 인자인 금액을 인출(리턴)하는 메소드
+//     - withdraw(long amount)
+//     - 인출 상한 금액은 잔액까지로 하며, 이 경우 이러한 상황을 출력
+
+class Account {
+  constructor(owner, balance){
+    this._owner = owner;
+    this._balance = balance;
+  }
+  set owner(value){
+    this._owner = value
+  }
+  get owner(){
+    return this._owner
+  }
+  set balance(value){
+    this._balance = value
+  }
+  get balance(){
+    return this._balance
+  }
+  deposit(amount){
+    return this.balance += amount
+  }
+  withdraw(longAmount){
+    if(longAmount > this.balance){
+      console.log('잔액부족');
+      return
+    }
+    this.balance -= longAmount
+    return this.balance
+  }
+}
+
+const account = new Account('계좌주',0);
+
+account.deposit(30000);
+console.log(account)
+account.withdraw(10000);
+console.log(account)
+account.withdraw(100000);
+
