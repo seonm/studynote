@@ -9,9 +9,8 @@ encodingURI(string)
 
 [잘못된 경우]
 <a href = "result.html?a=100&b=200&name=자바스크립트">click</a>
-
 [올바른 경우]
-<a href = "result.html?a=100&b=200&name=자바스크립트">click</a>
+<a href = "result.html?a=100&b=200&name=%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8">click</a>
 */
 const set1 = ';,/?:@&=+$#'; // 예약 문자
 const set2 = "-_.!~*()'"; // 비예약 문자 

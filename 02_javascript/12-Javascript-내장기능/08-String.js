@@ -57,7 +57,7 @@ console.log(`ì가 두번째로 나타나는 위치 : ${p3}`) // 5
 // 단 이 위치를 문자열의 끝에서 부터 세는 것이 아니라 문자열의 처음부터 센다.
 // 찾지 못할 경우 -1을 반환.
 const p4 = msg.lastIndexOf('i');
-console.log(`ì가 마지막으로 나타나는 위치 : ${p4}`) //35
+console.log(`i가 마지막으로 나타나는 위치 : ${p4}`) //35
 
 if(msg.indexOf('Hello') > -1){
   console.log('HEllo가 포함됨')
