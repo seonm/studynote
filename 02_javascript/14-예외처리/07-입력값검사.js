@@ -13,7 +13,7 @@ const regex = new RegexHelper();
 try {
   regex.kor(userName, '이름은 한글로만 입력하세요.');
   regex.maxLen(userName, 20, '이름은 최대 20자까지만 입력가능합니다.');
-  regex.num(age, '나이은 숫자로만 입력하세요.');
+  regex.num(age, '나이는 숫자로만 입력하세요.');
   regex.engNum(userId, '아이디은 영문과 숫자의 조합으로만 입력하세요.');
   regex.maxLen(userId, 20, '아이디는 최대 20자까지만 입력가능합니다.');
 }catch(err){
