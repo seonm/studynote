@@ -5,7 +5,6 @@ class Terran {
     this._hp = hp;
     this._dps = dps;
   }
-
   attack(target){
     console.log(`${this._name}(이)가 ${target}을(를) 공격합니다. 데미지:${this._dps}`)
   }
@@ -30,7 +29,6 @@ class Firebat extends Terran{
   constructor(name){
     // 클래스 상속 관계에서 부모의 생성자는 무조건 호출되어야 하므로,
     // 자식이 생성자를 갖는 경우 그 안에서 부모의 생성자를 강제 호출 해야한다.
-    
     //super(name, hp, dps) name 은 받아오지만 hp,dps는 받아오지 않기때문에 직접적으로 값을 넣어줘야한다.
     super(name, 100, 20)
   }
