@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+  <title>My Web Page</title>
+</head>
+<body>
+  <!--입력 내용을 감싸기 위한 부분-->
+  <form action="">
+    <!--입력 내용에 대한 그룹을 명시하는 부분-->
+    <fieldset>
+      <!--그룹의 제목-->
+      <legend>내용 입력하기</legend>
+      <!--입력 요소 배치-->
+      <div>
+        <label for="user_id">id</label>
+        <input type="text" name="user_id" id="user_id" maxlength="20" placeholder="id를 입력하세요.">
+      </div>
+      <div>
+        <label for="user_name">name</label>
+        <input type="text" name="user_name" id="user_name" maxlength="20" placeholder="이름을 입력하세요.">
+      </div>
+      <div>
+        <label for="user_pw">password</label>
+        <input type="password" name="user_pw" id="user_pw" maxlength="20" placeholder="pw을 입력하세요.">
+      </div>
+      <div>
+        <label for="memo">memo</label>
+        <input type="memo" name="memo" id="memo" maxlength="100" placeholder="memo을 입력하세요.">
+      </div>
+      <div>
+        <label for="data">hidden</label>
+        <input type="hidden" name="data" id="data" value="hidden data">
+      </div>
+    </fieldset>
+  </form>
+</body>
+</html>
