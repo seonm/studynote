@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>css</title>
+  <style type="text/css">
+    .parent{
+      background-color: #9898ff;
+      border:10px dotted #0000ff;
+      width:500px;
+      height:300px;
+    }
+    .child1{
+      background-color: #ffa2a2;
+      width: 500px;
+      height:300px;
+      padding:10px 20px;
+      border:5px solid red;
+    }
+    .child2{
+      background-color: #ffa2a2;
+      /*백분율 값은 부모가 기준이 된다.*/
+      width: 100%;
+      height: 100%;
+      padding:10px 20px;
+      border:5px solid red;
+    }
+    .child3{
+      background-color: #ffa2a2;
+      /*부모크기 - (자식 padding + border) = 자식 크기*/
+      width: 450px;
+      height: 270px;
+      padding:10px 20px;
+      border:5px solid red;
+    }
+  </style>
+</head>
+<body>
+  <div class="parent">
+    <div class="child1">Html &amp; css</div>
+  </div>
+  hello world
+  <hr>
+  <div class="parent">
+    <div class="child2">Html &amp; css</div>
+  </div>
+  hello world
+  <hr>
+  <div class="parent">
+    <div class="child3">Html &amp; css</div>
+  </div>
+  hello world
+  <hr>
+</body>
+</html>
