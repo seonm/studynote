@@ -1,21 +1,11 @@
-function solution(num) {
-  var answer = 0;
-  for(i=0; i<500; i++){
-    if (num == 1){
-      break;
-    }else if(!num == 1){
-      continue;
-    }
-    if(num % 2 === 0){
-      num = num / 2
-    }else{
-      num = num * 3 + 1
-    }
-    answer++
-  }
-  if(answer >= 500){
-      return answer = -1
-  }
-  return answer;
+const n = '2 4';
+const nN = n.split(' ');
+const a=parseInt(nN[0]);
+const b=parseInt(nN[1]);
+let result = 1;
+for(let i=0;i<b;i++){
+  result *= a
 }
-console.log(solution(626331))
+console.log(result)
+
+console.log(Math.pow(parseInt(nN[0], 10), parseInt(nN[1], 10)));
