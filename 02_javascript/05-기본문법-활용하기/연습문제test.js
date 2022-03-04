@@ -1,11 +1,12 @@
-const n = '2 4';
-const nN = n.split(' ');
-const a=parseInt(nN[0]);
-const b=parseInt(nN[1]);
-let result = 1;
-for(let i=0;i<b;i++){
-  result *= a
-}
-console.log(result)
+function solution(n) {
+  var arr = [];
 
-console.log(Math.pow(parseInt(nN[0], 10), parseInt(nN[1], 10)));
+  do {
+      arr.push(n%10);
+      n = Math.floor(n/10);
+  } while (n>0);
+
+  return arr;
+}
+
+console.log(solution(12345))
