@@ -1,0 +1,8 @@
+#header {position:relative;background: url('../img/sub_bg.png')}
+#header h1{background: url('../img/sub_logo.png') no-repeat top center;height:45px}
+#header .btn_home{position: absolute;right:4%;top:calc(50% - 12px)}
+
+#content{background: #fff;}
+#content .info_img{background:url(../img/info_bg.png) left top; padding-bottom: 20px;}
+#content .info_img img{margin: 0 auto;    display: block;}
+#content p{padding: 0 12px 20px;}

@@ -1,0 +1,4 @@
+#header{padding-bottom: 20px;}
+#content {background:url(../img/menu_bg.png) }
+#content ul{background:url('../img/menu.png') no-repeat top left;height:184px;}
+#content ul li a{height:calc(184px / 4);background: url(../img/list_right.png) no-repeat top right;text-indent: -999px;}

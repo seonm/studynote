@@ -1,12 +1,2 @@
-function solution(n) {
-  var arr = [];
-
-  do {
-      arr.push(n%10);
-      n = Math.floor(n/10);
-  } while (n>0);
-
-  return arr;
-}
-
-console.log(solution(12345))
+const a = '1 2 3 4 5'
+console.log(a.split(' ').reverse().join(' '))
