@@ -22,8 +22,6 @@ a{text-decoration: none;color: inherit;}
 .contents .sec {margin-top:70px}
 .contents .sec>.h2{border-bottom:1px solid #eee;padding-bottom: 16px;margin-bottom:16px;}
 
-
-.contents #projects{}
 .contents #projects>.h2{margin-bottom: 42px;}
 .contents #projects .list-wrap{display: flex;align-items: center;}
 .contents #projects .list{width:calc((100% - 24px) / 4);margin-right:16px; }
@@ -36,7 +34,6 @@ a{text-decoration: none;color: inherit;}
 .contents #about .list li{width:calc((100% - 24px) / 4);margin-right:16px;}
 .contents #about .list li:last-child{margin-right: 0;}
 .contents #about .list li img{ filter: grayscale(0.7);margin:0 0 16px}
-
 .contents #about .list li .text-gray{margin:16px 0;}
 .contents #about .list li .btn-contact{margin:16px 0 0;background: #eee;text-align: center;padding: 8px 16px;}
 
