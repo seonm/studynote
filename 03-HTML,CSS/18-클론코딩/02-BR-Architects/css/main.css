@@ -1,0 +1,48 @@
+*{box-sizing: border-box;}
+body{font-size: 15px;font-family: Verdana, sans-serif;line-height: 1.4;}
+img{width: 100%; height: auto;display: block;}
+a{text-decoration: none;color: inherit;}
+.text-basic{font-size:1rem;color:#333;}
+.text-gray{font-size:1rem;color:#999}
+.logo{letter-spacing: 3px;}
+.logo b{font-weight: 700;}
+.h2{font-size: 24px;}
+
+.header{background: #fff;display: flex;align-items: center;padding:8px 16px;box-shadow: 3px 0 5px rgba(0,0,0,0.3);position:fixed;width: 100%;z-index: 1;}
+.header .logo{margin-right: auto;padding: 8px 16px;}
+.header .logo b{margin-right: 10px;}
+.header .lnb{display: flex;align-items: center;}
+.header .lnb li{font-size: 15px;padding: 8px 16px;letter-spacing: 3px;}
+
+.ban-main{position: relative;}
+.ban-main .logo{font-size: 36px;color:#fff;position: absolute;left: 50%;top: 50%;transform: translate(-50%,-50%);}
+.ban-main .logo b{padding: 8px 16px;background: rgba(0,0,0,0.7);}
+
+.contents {max-width: 1500px;margin: 0 auto;width: calc(100% - 64px);}
+.contents .sec {margin-top:70px}
+.contents .sec>.h2{border-bottom:1px solid #eee;padding-bottom: 16px;margin-bottom:16px;}
+
+
+.contents #projects{}
+.contents #projects>.h2{margin-bottom: 42px;}
+.contents #projects .list-wrap{display: flex;align-items: center;}
+.contents #projects .list{width:calc((100% - 24px) / 4);margin-right:16px; }
+.contents #projects .list:last-child{margin-right: 0;}
+.contents #projects .list li {position: relative;}
+.contents #projects .list li:first-child{margin-bottom:16px}
+.contents #projects .list li .tag{background: #000;padding:8px 16px;color: #fff; position: absolute; left: 0; top: 0;}
+
+.contents #about .list{display: flex;margin-top: 48px;}
+.contents #about .list li{width:calc((100% - 24px) / 4);margin-right:16px;}
+.contents #about .list li:last-child{margin-right: 0;}
+.contents #about .list li img{ filter: grayscale(0.7);margin:0 0 16px}
+
+.contents #about .list li .text-gray{margin:16px 0;}
+.contents #about .list li .btn-contact{margin:16px 0 0;background: #eee;text-align: center;padding: 8px 16px;}
+
+.contents #contact form input{width: 100%;display: block;border:1px solid #eee; padding: 8px 16px; border-radius: 4px; margin-top: 16px;}
+.contents #contact .submit{background: #000;color: #fff;padding: 8px 16px;border: 0;margin:32px 0 42px;}
+
+.ft{display: flex; align-items: center;justify-content: center;background:#000;color:#fff;height: 100px;margin-top: 16px;}
+.ft p{margin-right:4px}
+.ft a{text-decoration: underline;}
