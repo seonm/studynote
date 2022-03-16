@@ -1,4 +1,3 @@
-html,body{height: 100%;}
 body,button{font-family: "Raleway", sans-serif;}
 
 .h1{font-size:64px}
@@ -14,11 +13,16 @@ body,button{font-family: "Raleway", sans-serif;}
 .con{filter: grayscale(50%);}
 .con img{width: 100%;height: auto;max-width: 900px;}
 
-.wide{background: url(../img/wedding_couple.jpg) no-repeat center; background-size: cover; min-height: 100%;position: relative;}
+.wide{background: url(../img/wedding_couple.jpg) no-repeat center; background-size: cover; min-height: 100vh;position: relative;}
 .wide .text{position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);color: #Fff; text-align: center;letter-spacing: 4px;line-height: normal;}
 .wide .text .h1,
 .wide .text .h3{margin:20px 0;}
 
+#home .h3{font-weight: 700;}
+
+#invit{background: url(../img/flowers.jpg) no-repeat center;background-size: cover;filter: grayscale(0%);}
+#invit .text .h1{margin-bottom:48px;}
+#invit .text .h3{letter-spacing: 1;}
 
 .center {background: #ffdddd;padding:64px 16px;text-align: center;}
 .center .h2{text-align: center;color:#757575;margin-bottom:42px;}
