@@ -1,0 +1,43 @@
+html,body{height: 100%;}
+body,button{font-family: "Raleway", sans-serif;}
+
+.h1{font-size:64px}
+.h2{font-size:36px;}
+.h3{font-size:30px;}
+.text-basic{font-size:15px;line-height: 2;}
+
+.hd{display: flex; padding: 8px; background: rgb(255 255 255 / 70%);; position: fixed; bottom: 0; z-index: 1; width: 100%;}
+.hd li{width: 25%;padding:8px 0;text-align: center;}
+.hd li:hover{background: #eee;}
+.hd a{color: inherit;text-decoration: none;}
+
+.con{filter: grayscale(50%);}
+.con img{width: 100%;height: auto;max-width: 900px;}
+
+.wide{background: url(../img/wedding_couple.jpg) no-repeat center; background-size: cover; min-height: 100%;position: relative;}
+.wide .text{position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);color: #Fff; text-align: center;letter-spacing: 4px;line-height: normal;}
+.wide .text .h1,
+.wide .text .h3{margin:20px 0;}
+
+
+.center {background: #ffdddd;padding:64px 16px;text-align: center;}
+.center .h2{text-align: center;color:#757575;margin-bottom:42px;}
+.center .btn{border: 0;padding:16px 24px;color: #fff;border-radius: 4px;min-width: 180px;}
+.center .btn.btn-black{background: #000;font-size: 18px;margin-top: 42px;}
+.center .btn.btn-pink{background: #f44336;font-size: 24px;margin-top:15px;}
+
+#jane .text-basic{font-style: italic; max-width: 900px; margin: 42px auto 0; text-align: left;}
+
+#wedding img{filter: grayscale(70%);}
+#wedding h2{margin-bottom:64px}
+#wedding .info{display: flex;justify-content: center;max-width: 900px; margin: 48px auto 0;}
+#wedding .info>div{width:50%;}
+#wedding .info .text-basic{margin-bottom:24px}
+
+#rsvp{filter: grayscale(0%);}
+#rsvp .h3{letter-spacing: 4px;}
+#rsvp p{font-size: 18px;margin:24px 0}
+#rsvp .btn{opacity:0.6}
+
+.ft{background:#000;padding:40px 0 100px;color: #fff;text-align: center;font-size: 15px;}
+.ft a{color: #fff;margin-left:4px;}
