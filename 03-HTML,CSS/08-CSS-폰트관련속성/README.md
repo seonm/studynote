@@ -59,3 +59,55 @@ selector {
 ## 구글 웹 폰트 (https://fonts.google.com)
 구글에서 운영하는 무료 웹 폰트 사이트.<br/>
 이곳에서 참조할 CSS 구문을 얻을 수 있다.
+
+
+### 2) 아이콘 폰트 ([font awesome](https://fontawesome.com/))
+
+- 특수문자에 반응하여 글꼴파일에 저장되어 있는 기호가 표시되게 하는 특수 폰트
+- [font awesome](https://fontawesome.com/)이 가장 널리 알려져 있다.
+    - version 4까지는 무료
+    - version 5,6은 부분 유료화 됨, 도메인이 없는 경우 사용 불가.
+
+### 3) Font awesome 4 (https://fontawesome.com/v4/)
+
+무료로 도메인의 제약 없이 사용할 수 있는 가장 일반적인 버전.
+
+#### 다운로드 받아 사용하기
+
+- [https://fontawesome.com/v4/get-started/](https://fontawesome.com/v4/get-started/) 페이지의 중간 부분에서 "Download" 버튼을 클릭
+- 다운로드 받은 파일의 압축을 해제하고 `css`폴더와 `fonts`폴더를 작업중인 위치로 복사.
+- `css`폴더와 `fonts`폴더는 반드시 같은 폴더 안에 존재해야 함.
+- html에서 `font-awesome.min.css` 파일을 참조.
+    ```html
+    <link rel='stylesheet' type='text/css' href='assets/css/font-awesome.min.css' />
+    ```
+- [https://fontawesome.com/v4/icons/](https://fontawesome.com/v4/icons/)에서 사용하고자 하는 폰트를 검색하여 사용.
+    ```html
+    <i class="fa fa-user" aria-hidden="true"></i>
+    ```
+
+
+## 프로덕션 빌드
+로드 시간을 줄이기 위해 번들 최소화, 가벼운 소스맵 및 애셋 최적화에 초점을 맞추어 빌드 하는 것.
+- min파일은 minify 축소하다 의 줄임으로 공백과 줄바꿈 제거 및 변수를 a,b등으로 변경하여 용량을 줄인 파일
+- webpack으로 변환시킬 수 있다.
+- 용량이 작아 웹페이지 로딩속도에 도움을 준다.
+
+## cdn
+### 캐시를 사용한 방법
+1. 웹페이지를 보여주기위해 한번에 많은 파일을 받아야한다.
+2. 똑같은 페이지 새로고침시 같은파일을 계속해서 받아야한다.(낭비)
+3. 개발자도구 애플리케이션 > 캐시저장공간
+    - 캐시란? 기억공간
+        웹브라우저가 한번 방문했던 페이지의 리소스(html코드를 제외한 재료들, 이미지, css, js.. )를 별도의 폴더에 저장해 놓고 있다가 다음번에 같은 페이지에 재방문하면 다운로드 받지 않고 이전에 저장해 놓은 파일을 사용하는 방법
+
+### cdn사용 방법
+파일을 직접 다운로드 받기 번거로운 경우 온라인에 공개되어 있는 CSS를 직접 참조하여 사용할 수 있다.
+```html
+<link rel='stylesheet' type='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' />
+```
+a.com과 b.com이 모두 아이콘폰트를 각자 사이트에 내려받아사용한다고 가정
+이 경우 방문자는 양쪽에서 동일한 파일을 내려받아야한다.
+브라우저 캐시는 도메인단위로 보관되기 때문에 동일한 파일이라 하더라도 도메인이 다르다면 서로 다른 파일로 판단하여 개별적으로 캐시를 보관한다.
+
+cdn은 제 3의 사이트에 있는 css를 받아 오는 것으로 a,b가 동일한 cdn.com사용시 cdn.com에서 1회만 파일을 다운받아 캐시에 저장. 리소스 품앗이(CSS돌려막기)
