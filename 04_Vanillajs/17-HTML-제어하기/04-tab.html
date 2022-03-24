@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body{font-family:Arial;}
+    .tab{overflow:hidden;border:1px solid #ccc;background: #f1f1f1;}
+    .tab button{background:inherit;float: left;border:none;outline: none;cursor: pointer;padding:6px 12px;transition: all 0.3s;font-size: 17px;}
+    .tab button:hover{background:#ddd}
+    .tab button.active{background:#ccc;}
+
+    .tabContent{display: none;padding:6px 12px;border: 1px solid #ccc;border-top: 0;}
+    .tabContent.active{display: block;}
+  </style>
+</head>
+<body>
+  <div class="tab">
+    <button class="tabLinks active" data-target="London">London</button>
+    <button class="tabLinks" data-target="Paris">Paris</button>
+    <button class="tabLinks" data-target="Seoul">Seoul</button>
+  </div>
+
+  <div data-city="London" class="tabContent active">
+    <h3>London</h3>
+    <p>London is the capital city of England.</p>
+  </div>
+  <div data-city="Paris" class="tabContent">
+    <h3>Paris</h3>
+    <p>Paris is the capital city of France.</p>
+  </div>
+  <div data-city="Seoul" class="tabContent">
+    <h3>Seoul</h3>
+    <p>Seoul is the capital city of Korea.</p>
+  </div>
+  <script>
+    document.querySelectorAll('.tabLinks').forEach((v,i)=>{
+      v.addEventListener('click',(e)=>{
+        // 현재 클릭된 항목의인덱스 번호
+        const currentIndex = i;
+
+        // 클릭된 버튼에 적용된 'data-target'값을 취득
+        const currentTarget = e.currentTarget.dataset.target;
+
+        // 모든 버튼에 대한 active클래스 해제
+        document.querySelectorAll('.tabLinks').forEach((v1,i1)=>{
+          if(currentIndex == i1){
+            v1.classList.add('active');
+          }else{
+            v1.classList.remove('active');
+          }
+         })  
+        
+        // 화면상에 보이는 모든 페이지를 숨김
+        document.querySelectorAll('.tabContent').forEach((v2,i2)=>{
+          if(v2.dataset.city == currentTarget){
+            v2.classList.add('active');
+          }else{
+            v2.classList.remove('active');
+          }
+        })
+      })
+    })
+  </script>
+</body>
+</html>

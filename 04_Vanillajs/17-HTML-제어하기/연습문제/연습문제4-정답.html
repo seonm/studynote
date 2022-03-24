@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    input{float: left;}
+  </style>
+</head>
+<body>
+  <h1 id="date">
+    <span class="before"> </span> ~ <span class="now"> </span>
+  </h1>
+  <input id="btn1" type="button" value="1일">
+  <input id="btn2" type="button" value="7일">
+  <input id="btn3" type="button" value="15일">
+  <input id="btn4" type="button" value="30일">
+  <input id="btn5" type="button" value="60일">
+</body>
+<script>
+  function btnDate(n){
+    let now = new Date();
+    let before = new Date();
+
+    before.setDate(before.getDate()-(n-1));
+
+    document.querySelector('.before').innerHTML = `${before.getFullYear()}-${before.getMonth()+1}-${before.getDate()} `;
+    document.querySelector('.now').innerHTML = `${now.getFullYear()}-${now.getMonth()+1}-${now.getDate()} `;
+  }
+
+  btnDate(1)
+  
+  document.querySelector('#btn1').addEventListener('click', () => btnDate(1));
+  document.querySelector('#btn2').addEventListener('click', () => btnDate(7));
+  document.querySelector('#btn3').addEventListener('click', () => btnDate(15));
+  document.querySelector('#btn4').addEventListener('click', () => btnDate(30));
+  document.querySelector('#btn5').addEventListener('click', () => btnDate(60));
+</script>
+  
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box1{
+      height: 2000px;
+      background: linear-gradient(0deg, #c9dcfe 0, #223ff6 100%);
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <div class="box1"></div>
+  </div>
+  <script>
+    // 스크롤은 대부분 브라우저 레벨에서 수행되므로 window객체에 대해서 이벤트를 정의해야한다.
+    // > 스크롤에따라 html문서가 변하는게 아니기 때문
+    window.addEventListener('scroll', e => {
+      const scrollTop = window.scrollY; // 스크롤바 Y좌표
+      const windowHeight = window.screen.availHeight; // 웹브라우저 창 높이
+      const documentHeight = document.body.scrollHeight; // HTML문서 높이
+      console.log(`스크롤이 발생하고 있음: scrollTop=${scrollTop},documentHeight=${documentHeight},windowHeight=${windowHeight}`)
+      
+      // 스크롤바의 반동 효과를 고려해 scrollTop + windowHeight가 실제 화면크기보다 더 커질수도 있다.
+      if(scrollTop + windowHeight >= documentHeight){
+        console.log('스크롤이 맨 끝에 도착했다.')
+        const container = document.querySelector('#container');
+        container.innerHTML += '<div class="box1"></div>'
+      }
+    })
+  </script>
+</body>
+</html>

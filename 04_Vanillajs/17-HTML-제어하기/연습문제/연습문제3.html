@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+
+  </style>
+</head>
+<body>
+  <img id="anyImg" src="./img/img1.png" alt="">
+  <script>
+    function imgIndex(){
+      let i=2;
+      setInterval(()=>{
+        let srcI = './img/img' + i + '.png';
+        document.getElementById('anyImg').src = srcI;
+        console.log(srcI)
+        i++;
+        if(i > 3){
+          i = 1;
+        }
+      }, 3000)
+    }
+    imgIndex()
+    //setInterval(imgIndex, 9000)
+    //console.log('a')
+    // 배열의 길이로 어떤수를 1증가한 값을 배열의 length로 나머지를 취하면 값의 범위는 0~2사이 이다.
+    
+  </script>
+</body>
+</html>

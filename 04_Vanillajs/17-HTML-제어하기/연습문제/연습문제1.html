@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style></style>
+</head>
+<body>
+  <div id="date"></div>
+  <script>
+    function time(){
+      const today = new Date();
+      const year = today.getFullYear();
+      const month = today.getMonth()>9 ? today.getMonth()+1:`0${today.getMonth()+1}`;
+      const date = today.getDate()>10 ? today.getDate():`0${today.getDate()}`;
+      const hours = today.getHours()>10 ? today.getHours():`0${today.getHours()}`;
+      const minutes = today.getMinutes()>10 ? today.getMinutes():`0${today.getMinutes()}`;
+      const seconds = today.getSeconds()>10 ? today.getSeconds():`0${today.getSeconds()}`;
+      
+      document.querySelector('#date').innerHTML = `${year}-${month}-${date} ${hours}:${minutes}:${seconds}`
+    }
+    
+    function nowTime(){
+      time();
+      setInterval(time, 1000)
+    }
+    nowTime()
+    
+
+  </script>
+</body>
+</html>
