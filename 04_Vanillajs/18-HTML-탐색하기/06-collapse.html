@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    ul,li{list-style: none;margin: 0;padding: 0;}
+    .collapsible-title {
+      background: #777;
+      color: #fff;
+      cursor: pointer;
+      padding: 18px;
+      border: none;
+      font-weight: normal;
+      margin: 0;
+      text-align: left;
+      outline: none;
+      font-size: 15px;
+    }
+
+    .active,
+    .collapsible-title:hover {
+      background: #555;
+    }
+
+    .content {
+      padding: 0 18px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.2s ease-out;
+      background: #f1f1f1;
+    }
+    .hd{display: flex;align-items: center;margin-bottom: 20px;}
+    .btn-content{margin-left:12px;
+      width: 120px;height: 48px;background: #9881c4;border-radius: 4px;color: #fff;line-height: 48px;text-align: center;cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <h2>Animated Collapsibles</h2>
+  <div class="hd">
+    A Colladivsible:
+    <div class="btn-content">컨텐츠 추가</div>
+  </div>
+  <ul id="list"></ul>
+  <script>
+    const hd = document.querySelector('.hd');
+    const list = document.getElementById('list');
+    
+    document.querySelector('.btn-content').addEventListener('click',e=>{
+      // li 생성
+      const li = document.createElement('li');
+      // li에 클래스 추가
+      li.classList.add('collapse');
+      
+      // list 하위에 li 추가
+      list.appendChild(li);
+
+      // title h1 생성
+      const h1 = document.createElement('h1');
+
+      // title class 추가
+      h1.classList.add('collapsible-title');
+
+      // contents div 생성
+      const content = document.createElement('div');
+      
+      // contents class 추가
+      content.classList.add('content')
+
+      // li에 title 및 contents 추가
+      li.appendChild(h1);
+      li.appendChild(content);
+
+      h1.innerHTML = 'text';
+      content.innerHTML = 'content';
+
+      activeEvent()
+    });
+    function activeEvent(){
+      document.querySelectorAll('.collapsible-title').forEach((v, i) => {
+        v.addEventListener('click', e => {
+          const current = e.currentTarget;
+          //current.classList.toggle('active');
+          const parent = current.parentElement;
+          const content = parent.querySelector('.content');
+          
+          parent.classList.toggle('active');
+
+          if (content.style.maxHeight) {
+            content.style.maxHeight = null;
+          } else {
+            content.style.maxHeight = content.scrollHeight + 'px';
+          }
+        })
+      })
+    }
+    
+  </script>
+</body>
+
+</html>

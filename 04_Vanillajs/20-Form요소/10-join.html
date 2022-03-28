@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .form-horizontal {
+      border: 5px solid #d5d5d5;
+      width: 500px;
+      margin: auto;
+      padding: 0 10px;
+    }
+
+    .form-group:after {
+      content: '';
+      display: block;
+      clear: both;
+    }
+
+    .form-group {
+      padding: 10px 0;
+      border-bottom: 1px dotted #eee
+    }
+
+    .form-group:last-child {
+      border-bottom: 0;
+    }
+
+    .col-md-2 {
+      width: 20%;
+      display: block;
+      float: left;
+      font-size: 14px;
+      padding-top: 7px;
+      text-indent: 5px;
+    }
+
+    .col-md-10 {
+      width: 80%;
+      display: block;
+      float: left;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 5px 0;
+      font-size: 14px;
+      border: 1px solid #eee;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .identify {
+      font-size: 14px;
+      color: #f00;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 가입 폼 시작 -->
+  <form class="form-horiazontal" name="joinForm" id="joinForm">
+    <!--ID-->
+    <div class="form-group">
+      <label for="userId" class="col-md-2">아이디<span class="identify">*</span></label>
+      <div class="col-md-10">
+        <input type="text" name="userId" id="userId" class="form-control">
+      </div>
+    </div>
+
+    <!--PW-->
+    <div class="form-group">
+      <label for="userPw" class="col-md-2">비밀번호<span class="identify">*</span></label>
+      <div class="col-md-10">
+        <input type="password" name="userPw" id="userPw" class="form-control">
+      </div>
+    </div>
+
+    <!--password recheck-->
+    <div class="form-group">
+      <label for="userPwRe" class="col-md-2">비밀번호 확인<span class="identify">*</span></label>
+      <div class="col-md-10">
+        <input type="password" name="userPwRe" id="userPwRe" class="form-control">
+      </div>
+    </div>
+
+    <!--name-->
+    <div class="form-group">
+      <label for="userName" class="col-md-2">이름<span class="identify">*</span></label>
+      <div class="col-md-10">
+        <input type="text" name="userName" id="userName" class="form-control">
+      </div>
+    </div>
+
+    <!--email-->
+    <div class="form-group">
+      <label for="email" class="col-md-2">이메일<span class="identify">*</span></label>
+      <div class="col-md-10">
+        <input type="email" name="email" id="email" class="form-control">
+      </div>
+    </div>
+
+    <!--tel-->
+    <div class="form-group">
+      <label for="tel" class="col-md-2">연락처<span class="identify">*</span></label>
+      <div class="col-md-10">
+        <input type="tel" name="tel" id="tel" class="form-control">
+      </div>
+    </div>
+
+    <!--gender-->
+    <div class="form-group">
+      <label for="gender1" class="col-md-2">성별<span class="identify">*</span></label>
+      <div class="col-md-10">
+        <label><input type="radio" name="gender" id="gender1" value="M">남자</label>
+        <label><input type="radio" name="gender" id="gender2" value="F">여자</label>
+      </div>
+    </div>
+
+    <!--subject-->
+    <div class="form-group">
+      <label for="subject" class="col-md-2">수강과목<span class="identify">*</span></label>
+      <div class="col-md-10">
+        <label><input type="checkbox" name="subject" id="subject1" value="html">HTML</label>
+        <label><input type="checkbox" name="subject" id="subject2" value="css">CSS</label>
+        <label><input type="checkbox" name="subject" id="subject3" value="js">Javascript</label>
+        <label><input type="checkbox" name="subject" id="subject4" value="jquery">JQuery</label>
+        <label><input type="checkbox" name="subject" id="subject5" value="php">PHP</label>
+      </div>
+    </div>
+
+    <!--btns-->
+    <div class="form-group">
+      <div class="text-center">
+        <button type="submit">가입하기</button>
+        <button type="reset">다시작성</button>
+      </div>
+    </div>
+  </form>
+
+  <!-- 정규표현식 검사 객체를 참조한다. -->
+  <script src="libs/BadRequestException.js"></script>
+  <script src="libs/RegexHelper.js"></script>
+  <script>
+    document.querySelector("#joinForm").addEventListener('submit', e => {
+      e.preventDefault();
+      const regexHelper = new RegexHelper();
+
+      try {
+        /* 아이디 검사 */
+        regexHelper.value('#userId', '아이디를 입력하세요.');
+        regexHelper.minLength('#userId', 4, '아이디는 최소 4자 이상 입력 가능합니다.');
+        regexHelper.maxLength('#userId', 20, '아이디는 최대 20자 까지만 입력 가능합니다.');
+        regexHelper.engNum('#userId', '아이디는 영어와 숫자 조합만 입력 가능합니다.')
+
+        /* 비밀번호 검사 */
+        regexHelper.value('#userPw', '비밀번호를 입력하세요.');
+        regexHelper.minLength('#userPw', 4, '비밀번호는 최소 4자 이상 입력 가능합니다.');
+        regexHelper.maxLength('#userPw', 20, '비밀번호는 최대 20자 까지만 입력 가능합니다.');
+        regexHelper.compareTo('#userPw','#userPwRe', '비밀번호 확인이 잘못되었습니다.')
+
+        /* 이름 검사 */
+        regexHelper.value('#userName', '이름을 입력하세요.');
+        regexHelper.minLength('#userName', 2, '이름은 최소 2자 이상 입력해주세요.')
+        regexHelper.maxLength('#userName', 20, '이름은 최대 20자 까지만 입력 가능합니다.')
+        regexHelper.kor('#userName', '이름은 한글만 입력 가능합니다.')
+
+        /* 이메일 검사 */
+        regexHelper.value('#email', '이메일을 입력하세요.');
+        regexHelper.email('#email', '이메일 주소가 잘못되었습니다.');
+
+        /* 연락처 검사 */
+        regexHelper.value('#tel', '연락처를 입력하세요.');
+        regexHelper.phone('#tel', '연락처가 잘못되었습니다.');
+
+        /* 성별 검사 */
+        regexHelper.check('input[name=gender]', '성별을 선택하세요.');
+
+        /* 수강 과목 검사 */
+        regexHelper.check('input[name=subject]', '과목을 선택하세요.')
+        regexHelper.checkMin('input[name=subject]', '과목은 2개 이상 선택하셔야 합니다.')
+        regexHelper.checkMax('input[name=subject]', '과목은 최대 3개까지 선택 가능 합니다. 선택하세요.')
+
+      } catch (e) {
+        alert(e.message);
+        console.error(e);
+        document.querySelector(e.selector).focus();
+        return;
+      }
+
+      // 처리 완료
+      alert('입력 형식 검사 완료')
+    })
+  </script>
+</body>
+
+</html>
