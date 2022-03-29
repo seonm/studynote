@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>naver login</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" integrity="sha512-NmLkDIU1C/C88wi324HBc+S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="./css/main.css">
+</head>
+<body>
+  <div class="header">
+    <div class="logo">NAVER</div>
+  </div>
+  <form class="contents" id="joinForm" action="">
+    <div class="box-wrap id">
+      <div class="title">아이디</div>
+      <div class="box">
+        <input type="text" class="box-left" id="userId">
+        <div class="box-right">@naver.com</div>
+      </div>
+    </div>
+    <div class="box-wrap pw">
+      <div class="title">비밀번호</div>
+      <div class="box">
+        <input type="password" class="box-left" id="userPw">
+        <div class="box-right"></div>
+      </div>
+    </div>
+    <div class="box-wrap pwRe">
+      <div class="title">비밀번호 재확인</div>
+      <div class="box">
+        <input type="password" class="box-left" id="userPwRe">
+        <div class="box-right"></div>
+      </div>
+    </div>
+    <div class="box-wrap name">
+      <div class="title">이름</div>
+      <div class="box">
+        <input type="text" class="box-left" id="userName">
+      </div>
+    </div>
+    <div class="box-wrap birth">
+      <div class="title">생년월일</div>
+      <div class="boxes">
+        <input type="text" class="yy col-3 box" id="userBirthY" placeholder="년(4자)" maxlength="4">  
+        <select class="mm col-3 box" id="userBirthM">
+          <option value="">월</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+        </select>
+        <input type="text" class="dd col-3 box" id="userBirthD" placeholder="일" maxlength="2">
+      </div>
+    </div>
+    <div class="box-wrap gender">
+      <div class="title">성별</div>
+      <div class="box">
+        <select name="gender" id="userGender">
+          <option value="">성별</option>
+          <option id="gender1" value="M">남자</option>
+          <option id="gender2" value="W">여자</option>
+        </select>
+      </div>
+    </div>
+    <div class="box-wrap email">
+      <div class="title">본인 확인 이메일<span class="small">(선택)</span></div>
+      <input type="text" class="dd col-3 box" placeholder="선택입력" id="userEmail">
+    </div>
+    <div class="box-wrap phone">
+      <div class="title">휴대전화</div>
+      <div class="box">
+        <select class="mm" id="">
+          <option value="">니카라과 +505</option>
+          <option value="" selected>대한민국 +82</option>
+          <option value="">덴마크 +45</option>
+        </select>
+      </div>
+      <div class="phone-box2">
+        <input type="tel" id="userTel" class="box-left box" placeholder="전화번호 입력">
+        <button class="box-right" id="userTelBtn">인증번호받기</button>
+      </div>
+      <div class="phone-box3 box disabled">
+        <input type="tel" id="userTelPass" placeholder="인증번호 입력하세요." disabled="disabled">
+      </div>
+    </div>
+    <button type="submit" class="submit" value="가입하기">가입하기</button>
+  </form>
+  <div class="footer">
+    <ul class="ft-info">
+      <li>이용약관</li>
+      <li><b>개인정보처리방침</b></li>
+      <li>책임의 한계와 법적고지</li>
+      <li>회원정보 고객센터</li>
+    </ul>
+    <div class="ft-copy">
+      <span class="ft-logo"></span>
+      Copyright <b> NAVER Corp. </b> All Rights Reserved.
+    </div>
+  </div>
+  
+  <script src="./libs/BadRequestException.js" type="text/javascript"></script>
+  <script src="./libs/RegexHelper.js" type="text/javascript"></script>
+  <script src="./js/main.js" type="text/javascript"></script>
+  <script>
+  </script>
+</body>
+</html>
