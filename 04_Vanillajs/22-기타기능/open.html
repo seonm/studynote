@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>새로열린창</h1>
+  <p>popup sample</p>
+  <hr>
+  <div><a href="#" id="close">창닫기</a></div>
+  <script>
+    document.querySelector('#close').addEventListener('click', e=>{
+      e.preventDefault(); // 막아주지않으면 사파리에서 동작 안함
+      self.close();
+      // 혹은 window.close()
+    })
+  </script>
+</body>
+</html>

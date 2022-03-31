@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>라이브러리 활용 chart.js 연습문제</title>
+  <style>
+    .subplot{
+      width: 90%;padding: 5%;margin:0 auto; box-sizing: border-box;
+    }
+    .subplot-item{
+      width: auto;height: 320px;
+    }
+  </style>
+</head>
+<body>
+  <div class="subplot">
+    <h2>학년에 따른 평균 나이 변화</h2>
+    <div class="subplot-item">
+      <canvas id="mychart2"></canvas>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script type="text/javascript" src="dataset.js"></script>
+  <script type="text/javascript">
+    let gradeArr = [];
+    let info = {}
+
+    // 학년 및 나이 가져오기
+    for(let i=0;i<student.length;i++){
+      // 학년 배열
+      if(!gradeArr.includes(student[i]['grade'])){
+        gradeArr.push(student[i]['grade'])
+        info[student[i]['grade']+'학년'] = [];
+      } 
+
+      // 나이 배열
+      const yy = new Date().getFullYear();
+      const age = yy - Number(student[i].birthdate.slice(0,4)) + 1;
+
+      info[student[i]['grade']+'학년'].push(age)
+    }
+    
+    
+    const ageInfo = {}
+    Object.keys(info).sort().forEach(function(key) {
+      ageInfo[key] = info[key];
+    });
+
+    let avg = [];
+    for(const i in ageInfo){
+      let sum = 0;
+      for(let j=0;j<ageInfo[i].length;j++){
+        sum += ageInfo[i][j]
+      }
+      console.log(sum)
+      avg.push(sum/ageInfo[i].length)
+    }
+    const ageInfoKeys = Object.getOwnPropertyNames(ageInfo);
+    
+    console.log(ageInfo)
+    
+    const mychart1 = document.getElementById('mychart2');
+
+    new Chart(mychart1, {
+        type: 'line',
+        
+        data: {
+          labels : ageInfoKeys,
+          datasets : [
+            {
+              label:'평균 나이',
+              data:avg,
+              borderWidth:0.5, 
+              borderColor:'#ff6600', 
+            }
+          ]
+        },
+        options: {
+          maintainAspectRatio:false,
+        }
+      }
+    );
+  </script>
+</body>
+</html>

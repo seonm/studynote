@@ -41,6 +41,10 @@ document.querySelector('.phone-box2 input').addEventListener('change',e=>{
   disable()
 });
 
+document.querySelector('#userTelBtn').addEventListener('click',e=>{
+  e.preventDefault()
+})
+
 /*
   @Filename : main.js
   @Author : 정선미(misoda1004@gmail.com)

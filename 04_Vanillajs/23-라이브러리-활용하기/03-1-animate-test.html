@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <style>
+    .box {
+      width: 300px;
+      height: 200px;
+      font-size: 40px;
+      color: #fff;
+      background: #f60;
+      text-align: center;
+      line-height: 200px;
+      margin: 250px auto;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>scroll event plugin "AOS"</h1>
+  <p>
+    <a href="https://michalsnik.github.io/aos">AOS link</a>
+  </p>
+  <hr>
+  <ul>
+    <li>data-aos : 애니메이션 종류 문자열(필수)</li>
+    <li>data-aos-duration : 애니메이션 속도(1/1000초)</li>
+    <li>data-aos-easing : 애니메이션 재생 옵션(css의 transition 속성 값을 따름)</li>
+    <li>data-aos-offset : 대상요소가 화면 하단으로부터 떨어진 거리. (이 거리에 도달하면 애니메이션 작동함)</li>
+  </ul>
+
+  <div class="box" data-aos="fade-zoom-in" data-aos-offset="0" data-aos-easing="ease-in-sine" data-aos-duration="600">
+    AOS</div>
+  <div class="box" data-aos="fade-left" data-aos-offset="300" data-aos-easing="ease-in-sine" data-aos-duration="600">AOS
+  </div>
+  <div class="box" id="target" data-aos="fade-right" data-aos-offset="0" data-aos-easing="ease-in-sine" data-aos-duration="600">AOS
+  </div>
+  <div class="box" data-aos="fade-up" data-aos-offset="300" data-aos-easing="ease-in-sine" data-aos-duration="600">AOS
+  </div>
+  <div class="box" data-aos="fade-down" data-aos-offset="100" data-aos-easing="ease-in-sine" data-aos-duration="600">AOS
+  </div>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="http://unpkg.com/animations.js"></script>
+  
+  <script>
+    AOS.init();
+
+      // const effects = document.querySelector('#effects');
+      const effectName = 'bounce';
+      // console.log(effectName)
+      const options = {
+        iterations: 5, // 반복 횟수 (숫자값 지정, infinity라고 설정할 경우 무한반복)
+        iterationStart: 0, // 반복 시작 --> 0번부터 iterations에 지정된 1회 반복 --> 1번 실행
+        delay: 0, // 시작전 딜레이 시간
+        endDelay: 0, // 재생 종료 후 딜레이 시간
+        direction: 'alternate', // 재생방향 -> 순방향, 역방향 번갈아 재생(normal, reverse, alternate, alternate-reverse)
+        duration: 700, // 재생에 걸리는 시간(1/1000초)
+        easing: 'ease' //재생속도 옵션(linear, ease-in, ease-out, ease-in-out)
+      };
+      const keyframes = animations.animations[effectName];
+      document.querySelector('#target').animate(keyframes, options);
+  </script>
+</body>
+
+</html>
