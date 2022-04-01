@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .subplot{
+      width: calc(89% / 3);padding: 5%;margin:0 auto; box-sizing: border-box;
+    }
+    .subplot-item{
+      width: auto;height: 320px;
+    }
+  </style>
+</head>
+<body>
+  <div class="subplot">
+    <h2>학과별 학생 수</h2>
+    <div class="subplot-item">
+      <canvas id="mychart1"></canvas>
+    </div>
+  </div>
+  <div class="subplot">
+    <h2>학년에 따른 평균 나이 변화</h2>
+    <div class="subplot-item">
+      <canvas id="mychart2"></canvas>
+    </div>
+  </div>
+  <div class="subplot">
+    <h2>학년별 평균키와 평균 몸무게</h2>
+    <div class="subplot-item">
+      <canvas id="mychart3"></canvas>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script type="text/javascript" src="../dataset.js"></script>
+  
+  <!-- 연습문제1번 -->
+  <script type="text/javascript">
+    const department = []
+    const studentCount = []
+
+    // 학과데이터 가져오기
+    student.forEach((v,i)=>{
+      const d = v.deptno // 학과데이터
+      const overlap = department.indexOf(d) // 중복여부 검사 // 값이 없을 시 -1 반환
+
+      if(overlap == -1){
+        // 없을때 학과 및 학생수 추가
+        department.push(d)
+        studentCount.push(1)
+      }else{
+        // 있을때 동일한 인덱스번호에 +1
+        studentCount[overlap]++
+      }
+    })
+
+    console.log(department,studentCount)
+
+    const mychart1 = document.getElementById('mychart1');
+
+    new Chart(mychart1, {
+        type: 'bar',
+        data: {
+          labels : department,// 학과
+          datasets : [
+            {
+              label:'학생수', // 데이터 이름
+              data:studentCount, // 학생수
+              borderWidth:1, 
+
+              borderColor:'rgba(2,99,132,1)', 
+              backgroundColor:'rgba(2,99,132,0.2)'
+            }
+          ]
+        },
+
+        options: {
+          maintainAspectRatio:false,
+          indexAxis:'x'
+        }
+      }
+    );
+
+  </script>
+
+  <!-- 연습문제 2,3번 공통코드인
+    배열을 파라미터로 받아 평균을 리턴하는 함수 -->
+  <script>
+    function getAvg(data){
+      let sum = 0;
+      data.forEach((v,i)=>{
+        sum += v;
+      })
+      return sum / data.length
+    }
+    getAvg([1,2,3,4])
+  </script>
+  
+  <!-- 연습문제 2번 -->
+  <script type="text/javascript">
+    const ageInfo = {}
+    // 학년 및 나이 가져오기
+    student.forEach((v,i)=>{
+      //나이 구하기
+      const yy = new Date().getFullYear();
+      const age = yy - parseInt(v.birthdate.substring(0,4)) + 1;
+
+      if(ageInfo[`${v.grade}학년`] == undefined){
+        ageInfo[`${v.grade}학년`] = [age]
+      }else{
+        ageInfo[`${v.grade}학년`].push(age)
+      }
+    });
+    
+    console.log(ageInfo)
+
+    const gradeArr = [];
+    const age = [];
+
+    for(const key in ageInfo){
+      gradeArr.push(key)
+      age.push(getAvg(ageInfo[key]))
+    }
+    console.log(gradeArr, age)
+
+    // 순서정리
+
+
+
+    // Object.keys(info).sort().forEach(function(key) {
+    //   ageInfo[key] = info[key];
+    // });
+
+    // let avg = [];
+    // for(const i in ageInfo){
+    //   let sum = 0;
+    //   for(let j=0;j<ageInfo[i].length;j++){
+    //     sum += ageInfo[i][j]
+    //   }
+    //   console.log(sum)
+    //   avg.push(sum/ageInfo[i].length)
+    // }
+    // const ageInfoKeys = Object.getOwnPropertyNames(ageInfo);
+    
+    // console.log(ageInfo)
+    
+    const mychart2 = document.getElementById('mychart2');
+    new Chart(mychart2, {
+        type: 'line',
+        
+        data: {
+          labels : ageInfoKeys,
+          datasets : [
+            {
+              label:'평균 나이',
+              data:avg,
+              borderWidth:0.5, 
+              borderColor:'#ff6600', 
+            }
+          ]
+        },
+        options: {
+          maintainAspectRatio:false,
+        }
+      }
+    );
+  </script>
+
+</body>
+</html>
