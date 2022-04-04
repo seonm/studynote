@@ -46,6 +46,13 @@ npm install -g json-server
 ```shell
 json-server --watch 데이터파일경로 [--port 9999]
 ```
+![img](../img/error1.png)
+터미널에서 경로 이동시 발생한 오류로 이동할 폴더명에`()`를 제거해주니 실행되었다.
+
+![img](../img/error.png)
+mac 실행시 발생한 오류로 [--port 9999] 제거하고
+`json-server --watch myschool.json`으로 실행하니 실행되었다.
+
 
 아래와 같은 형식으로 URL접근이 가능
 
