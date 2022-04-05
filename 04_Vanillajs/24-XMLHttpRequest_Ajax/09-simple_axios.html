@@ -97,7 +97,9 @@
         const deptno = e.currentTarget.dataset.deptno;
         console.log(deptno);
 
-        // HTTP의 4대 접속방식 'GET : 조회, POST, PUT, DELETE : 삭제'가 각각 함수로 존재
+        // CRUD = C : create 생성, R : read 조회, U : update 수정, D : delete 삭제
+        // HTTP의 4대 접속방식 'GET : 조회, POST : 새로운 정보 추가, PUT : 변경, DELETE : 삭제'가 각각 함수로 존재
+        // URI는 명사로 이루어져야한다.
         axios
         .get(`http://localhost:3000/department/${deptno}`)
 
