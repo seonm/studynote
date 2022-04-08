@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>교수관리 ::: MySchool</title>
+  <link rel="stylesheet" href="./assets/css/style.min.css">
+</head>
+<body>
+  <div class="container">
+    <!-- header -->
+    <div data-include="inc/header.html"></div>
+    <!-- body -->
+    <section>
+      <p><a href="add.html" class="btn btn-basic">새 교수 추가</a></p>
+      <table class="table">
+        <thead>
+          <tr>
+            <th class="text-center">교수번호</th>
+            <th class="text-center">이름</th>
+            <th class="text-center">아이디</th>
+            <th class="text-center">직급</th>
+            <th class="text-center">급여</th>
+            <th class="text-center">입사일</th>
+            <th class="text-center">보직수당</th>
+            <th class="text-center">부서번호(학과번호)</th>
+            <th class="text-center">-</th>
+          </tr>
+        </thead>
+        <tbody id="listBody"></tbody>
+      </table>
+    </section>
+    <!-- footer -->
+    <div data-include="inc/footer.html"></div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="assets/js/include.js"></script>
+  <script>
+    (async()=>{
+      // ajax 결과가 저장될 json
+      let json = null;
+      
+      // ajax
+      try {
+        json = await axios.get('http://localhost:3000/professor');
+      } catch (err) {
+        console.error(err);
+        alert('요청을 처리하는데 실패했습니다.');
+        return;
+      }
+      console.log(json);
+      // ajax결과가 존재한다면?
+      if(json != null){
+        const listBody = document.querySelector('#listBody');
+        const {data} = json;
+        
+        data.forEach((v,i)=>{
+          const tr = document.createElement('tr');
+
+          // 일련번호를 출력한 1번째 칸을 생성
+          const tdId = document.createElement('td');
+          tdId.innerHTML = v.id;
+
+
+          // 2번째 칸을 생성
+          const tdName = document.createElement('td');
+          // 상세보기를 위한 링크로 구현된 학과 이름을 두번째 칸에 추가
+          // 어떤 학과를 열람할 것인가를 의미하는 id값을 GET파라미터로 전달함.
+          // 대체로 id라는 이름의 변수는 그 대상을 식별하기 위한 고유한 값을 의미(=일렬번호)
+          const nameLink = document.createElement('a');
+          nameLink.setAttribute('href', `view.html?id=${v.id}`);
+          nameLink.innerHTML = v.name;
+          tdName.appendChild(nameLink);
+
+          // 3번째 칸을 생성
+          const tdUserid = document.createElement('td');
+          tdUserid.innerHTML = v.userid;
+
+          // 4번째 칸을 생성
+          const tdPosition = document.createElement('td');
+          tdPosition.innerHTML = v.position;
+
+          // 5번째 칸을 생성
+          const tdSal = document.createElement('td');
+          tdSal.innerHTML = v.sal;
+
+          // 6번째 칸을 생성
+          const tdHiredate = document.createElement('td');
+          tdHiredate.innerHTML = new Date(v.hiredate).toISOString().slice(0,10);
+
+          // 7번째 칸을 생성
+          const tdComm = document.createElement('td');
+          tdComm.innerHTML = v.comm;
+
+          // 8번째 칸을 생성
+          const tdDeptno = document.createElement('td');
+          tdDeptno.innerHTML = v.deptno;
+
+          // 9번째 칸을 생성
+          const tdBtns = document.createElement('td');
+
+          // 어떤 항목을 수정할 것인지를 GET파라미터로 담은 링크를 9번째칸에 추가
+          const btnEdit = document.createElement('a');
+          btnEdit.setAttribute('href', `edit.html?id=${v.id}`)
+          btnEdit.innerHTML = '수정'
+          tdBtns.appendChild(btnEdit);
+
+          // 어떤 항목을 삭제할 것인지를 dataset으로 저장하고 있는 링크를 9번째칸에 추가
+          const btnDel = document.createElement('a');
+          btnDel.setAttribute('href','#');
+          btnDel.dataset.id = v.id; // click Event를 위한 속성 추가
+          btnDel.dataset.name = v.name; // click Event를 위한 속성 추가
+          btnDel.innerHTML = '삭제';
+          btnDel.classList.add('btn-delete');
+          tdBtns.appendChild(btnDel);
+
+          // tr에 td 9개 추가
+          tr.appendChild(tdId);
+          tr.appendChild(tdName);
+          tr.appendChild(tdUserid);
+          tr.appendChild(tdPosition);
+          tr.appendChild(tdSal);
+          tr.appendChild(tdHiredate);
+          tr.appendChild(tdComm);
+          tr.appendChild(tdDeptno);
+          tr.appendChild(tdBtns);
+
+          // 구성된 tr을 tbody에 추가
+          listBody.appendChild(tr);
+          
+          // 삭제 버튼에 대한 클릭 이벤트 구현
+          btnDel.addEventListener('click', async (e) => {
+            e.preventDefault();
+
+            const current = e.currentTarget;
+            const id= current.dataset.id;
+            const name = current.dataset.name;
+
+            if(!confirm(`정말 ${name}(을)를 삭제하시겠습니까?`)){
+              return;
+            }
+
+            let json = null;
+            try {
+              json = axios.delete(`http://localhost:3000/professor/${id}`);
+            } catch (err) {
+              console.error(err);
+              alert('요청을 처리하는데 실패했습니다.');
+              return;
+            }
+            if(json !== null){
+              // 클릭된 링크를 기준으로 가장 가까운 tr 태그를 상위 요소 중에서 찾아 제거함.
+              current.closest('tr').remove();
+            }
+          })
+        })
+      }
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>학생관리 ::: MySchool::: 추가</title>
+  <link rel="stylesheet" href="./assets/css/style.min.css">
+</head>
+<body>
+  <div class="container">
+    <!-- header -->
+    <div data-include="inc/header.html"></div>
+    <!-- body -->
+    <section>
+      <form action="" name="form" id="student-form">
+
+        <input type="hidden" name="id" id="id">
+
+        <div class="form-group">
+          <label for="name">이름<span class="text-danger">*</span></label>
+          <div>
+            <input type="text" name="name" id="name">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="userid">아이디<span class="text-danger">*</span></label>
+          <div>
+            <input type="text" name="userid" id="userid">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="grade">학년<span class="text-danger">*</span></label>
+          <div>
+            <input type="number" name="grade" id="grade">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="idnum">주민번호<span class="text-danger">*</span></label>
+          <div>
+            <input type="text" name="idnum" id="idnum">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="birthdate">생년월일<span class="text-danger">*</span></label>
+          <div>
+            <input type="date" name="birthdate" id="birthdate">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="tel">전화번호<span class="text-danger">*</span></label>
+          <div>
+            <input type="text" name="tel" id="tel">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="height">키<span class="text-danger">*</span></label>
+          <div>
+            <input type="number" name="height" id="height">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="weight">몸무게<span class="text-danger">*</span></label>
+          <div>
+            <input type="number" name="weight" id="weight">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="deptno">학과번호<span class="text-danger">*</span></label>
+          <div>
+            <input type="number" name="deptno" id="deptno">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="profno">담당교수 일련번호</label>
+          <div>
+            <input type="number" name="profno" id="profno">
+          </div>
+        </div>
+
+        <div class="text-center">
+          <button type="submit" class=" btn btn-basic">추가하기</button>
+          <button type="reset" class="btn btn-edit">다시작성</button>
+        </div>
+
+      </form>
+    </section>
+    <!-- footer -->
+    <div data-include="inc/footer.html"></div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="assets/js/include.js"></script>
+  <script>
+    document.querySelector('#student-form').addEventListener('submit', async(e)=>{
+      e.preventDefault();
+
+      // 입력값 받아오기
+      const name = document.querySelector('#name').value;
+      const userid = document.querySelector('#userid').value;
+      const grade = document.querySelector('#grade').value;
+      const idnum = document.querySelector('#idnum').value;
+      const birthdate = document.querySelector('#birthdate').value;
+      const tel = document.querySelector('#tel').value;
+      const weight = document.querySelector('#weight').value;
+      const height = document.querySelector('#height').value;
+      const deptno = document.querySelector('#deptno').value;
+      const profno = document.querySelector('#profno').value;
+
+      // 입력값에 대한 유효성 검사 진행...(이 예제에세는 생략)
+      let json = null;
+
+      // ajax
+      try {
+        // 대부분의 backend가 일렬번호는 자체적으로 생성하기때문에 create에 해당하는 데이터 추가 처리에서는
+        // 백엔드에게 일렬번호를 제외한 변수만 전달해야한다.
+        json = await axios.post('http://localhost:3000/student',{
+          name: name,
+          userid: userid,
+          grade: grade,
+          idnum: idnum,
+          birthdate: birthdate,
+          tel: tel,
+          weight: weight,
+          height: height,
+          deptno: deptno,
+          profno: profno,
+        });
+      } catch (err) {
+        console.error(err);
+        alert('요청을 처리하는데 실패했습니다.');
+        return;
+      }
+
+      // ajax결과가 존재한다면?
+      if(json != null){
+        const {data} = json;
+        console.log(data);
+        // 백엔드에서 데이터 저장에 대한 응답으로 보낸 JSON에는 생성된 신규항목에 대한 일렬번호가 포함되어 있다.
+        // 이 값을 활용하여 상세페이지로 이동해야 한다.
+        // 이 때, 어떤 대상을 열람할 것인지에 대한 GET 파라미터를 구성한다.
+       window.location = `view.html?id=${data.id}`
+      }
+    })
+  </script>
+</body>
+</html>

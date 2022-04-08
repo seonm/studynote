@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>교수관리 ::: MySchool::: 추가</title>
+  <link rel="stylesheet" href="./assets/css/style.min.css">
+</head>
+<body>
+  <div class="container">
+    <!-- header -->
+    <div data-include="inc/header.html"></div>
+    <!-- body -->
+    <section>
+      <form action="" name="form" id="professor-form">
+
+        <input type="hidden" name="id" id="id">
+
+        <div class="form-group">
+          <label for="name">이름<span class="text-danger">*</span></label>
+          <div>
+            <input type="text" name="name" id="name">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="userid">아이디<span class="text-danger">*</span></label>
+          <div>
+            <input type="text" name="userid" id="userid">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="position">직급<span class="text-danger">*</span></label>
+          <div>
+            <input type="text" name="position" id="position">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="sal">급여<span class="text-danger">*</span></label>
+          <div>
+            <input type="number" name="sal" id="sal">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="hiredate">입사일<span class="text-danger">*</span></label>
+          <div>
+            <input type="date" name="hiredate" id="hiredate">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="comm">보직수당</label>
+          <div>
+            <input type="number" name="comm" id="comm">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="deptno">부서번호(학과번호)<span class="text-danger">*</span></label>
+          <div>
+            <input type="number" name="deptno" id="deptno">
+          </div>
+        </div>
+
+        <div class="text-center">
+          <button type="submit" class=" btn btn-basic">추가하기</button>
+          <button type="reset" class="btn btn-edit">다시작성</button>
+        </div>
+
+      </form>
+    </section>
+    <!-- footer -->
+    <div data-include="inc/footer.html"></div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="assets/js/include.js"></script>
+  <script>
+    document.querySelector('#professor-form').addEventListener('submit', async(e)=>{
+      e.preventDefault();
+
+      // 입력값 받아오기
+      const name = document.querySelector('#name').value;
+      const userid = document.querySelector('#userid').value;
+      const position = document.querySelector('#position').value;
+      const sal = document.querySelector('#sal').value;
+      const hiredate = document.querySelector('#hiredate').value;
+      const comm = document.querySelector('#comm').value;
+      const deptno = document.querySelector('#deptno').value;
+
+      // 입력값에 대한 유효성 검사 진행...(이 예제에세는 생략)
+      let json = null;
+
+      // ajax
+      try {
+        // 대부분의 backend가 일렬번호는 자체적으로 생성하기때문에 create에 해당하는 데이터 추가 처리에서는
+        // 백엔드에게 일렬번호를 제외한 변수만 전달해야한다.
+        json = await axios.post('http://localhost:3000/professor',{
+          name: name,
+          userid: userid,
+          position: position,
+          sal: sal,
+          hiredate: hiredate,
+          comm: comm,
+          deptno: deptno,
+        });
+      } catch (err) {
+        console.error(err);
+        alert('요청을 처리하는데 실패했습니다.');
+        return;
+      }
+
+      // ajax결과가 존재한다면?
+      if(json != null){
+        const {data} = json;
+        console.log(data);
+        // 백엔드에서 데이터 저장에 대한 응답으로 보낸 JSON에는 생성된 신규항목에 대한 일렬번호가 포함되어 있다.
+        // 이 값을 활용하여 상세페이지로 이동해야 한다.
+        // 이 때, 어떤 대상을 열람할 것인지에 대한 GET 파라미터를 구성한다.
+       window.location = `view.html?id=${data.id}`
+      }
+    })
+  </script>
+</body>
+</html>

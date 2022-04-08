@@ -76,6 +76,7 @@ async function get_image_search() {
   const selectBox = document.querySelector('#source')
   const selectBoxSelected = selectBox.options[selectBox.selectedIndex].value;
 
+  // 데이터 받아오기
   try {
     json = await axios.get(`https://dapi.kakao.com/v2/search/${selectBoxSelected}`, {
       params: {
@@ -132,20 +133,24 @@ async function get_image_search() {
       // 작성일
       const datetime = document.createElement('span'); // 작성일
       
-      // "2022-03-28T10:44:40.000+09:00"
-      const yy = Number(v.datetime.substring(0,4))
-      const mm = Number(v.datetime.substring(5,7))
-      const dd = Number(v.datetime.substring(8,10))
-      const date = `${yy}. ${mm}. ${dd}`
-      const time = v.datetime.substring(11,13)<12 ? '오전 ' : '오후 ';
-      const timeFull = time + v.datetime.substring(11,19);
-      datetime.innerHTML = `${date} ${timeFull}`;
-      datetime.classList.add('info')
+      // const yy = Number(v.datetime.substring(0,4))
+      // const mm = Number(v.datetime.substring(5,7))
+      // const dd = Number(v.datetime.substring(8,10))
+      // const date = `${yy}. ${mm}. ${dd}`
+      // const time = v.datetime.substring(11,13)<12 ? '오전 ' : '오후 ';
+      // const timeFull = time + v.datetime.substring(11,19);
+      // datetime.innerHTML = `${date} ${timeFull}`;
+      // datetime.classList.add('info')
+
+      const date = new Date(v.datetime);
+      const span2 = document.createElement('span');
+      span2.innerHTML = date.toLocaleString();
+      span2.classList.add('info');
 
       a.appendChild(img);
       a.appendChild(title);
       a.appendChild(contents);
-      a.appendChild(name);
+      a.appendChild(span2);
       a.appendChild(datetime);
 
       li.appendChild(a);
