@@ -1,105 +1,121 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <style>
-    ul,li{list-style: none;margin: 0;padding: 0;}
-    .collapsible-title {
-      background: #777;
-      color: #fff;
-      cursor: pointer;
-      padding: 18px;
-      border: none;
-      font-weight: normal;
-      margin: 0;
-      text-align: left;
-      outline: none;
-      font-size: 15px;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      ul,
+      li {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
 
-    .active,
-    .collapsible-title:hover {
-      background: #555;
-    }
+      .collapsible-title {
+        background: #777;
+        color: #fff;
+        cursor: pointer;
+        padding: 18px;
+        border: none;
+        font-weight: normal;
+        margin: 0;
+        text-align: left;
+        outline: none;
+        font-size: 15px;
+      }
 
-    .content {
-      padding: 0 18px;
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.2s ease-out;
-      background: #f1f1f1;
-    }
-    .hd{display: flex;align-items: center;margin-bottom: 20px;}
-    .btn-content{margin-left:12px;
-      width: 120px;height: 48px;background: #9881c4;border-radius: 4px;color: #fff;line-height: 48px;text-align: center;cursor: pointer;
-    }
-  </style>
-</head>
+      .active,
+      .collapsible-title:hover {
+        background: #555;
+      }
 
-<body>
-  <h2>Animated Collapsibles</h2>
-  <div class="hd">
-    A Colladivsible:
-    <div class="btn-content">컨텐츠 추가</div>
-  </div>
-  <ul id="list"></ul>
-  <script>
-    const hd = document.querySelector('.hd');
-    const list = document.getElementById('list');
-    
-    document.querySelector('.btn-content').addEventListener('click',e=>{
-      // li 생성
-      const li = document.createElement('li');
-      // li에 클래스 추가
-      li.classList.add('collapse');
-      
-      // list 하위에 li 추가
-      list.appendChild(li);
+      .content {
+        padding: 0 18px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.2s ease-out;
+        background: #f1f1f1;
+      }
 
-      // title h1 생성
-      const h1 = document.createElement('h1');
+      .hd {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+      }
 
-      // title class 추가
-      h1.classList.add('collapsible-title');
+      .btn-content {
+        margin-left: 12px;
+        width: 120px;
+        height: 48px;
+        background: #9881c4;
+        border-radius: 4px;
+        color: #fff;
+        line-height: 48px;
+        text-align: center;
+        cursor: pointer;
+      }
+    </style>
+  </head>
 
-      // contents div 생성
-      const content = document.createElement('div');
-      
-      // contents class 추가
-      content.classList.add('content')
+  <body>
+    <h2>Animated Collapsibles</h2>
 
-      // li에 title 및 contents 추가
-      li.appendChild(h1);
-      li.appendChild(content);
+    <div class="hd">
+      <p>A Colladivsible:</p>
+      <div class="btn-content">컨텐츠 추가</div>
+    </div>
 
-      h1.innerHTML = 'text';
-      content.innerHTML = 'content';
+    <ul id="list"></ul>
 
-      activeEvent()
-    });
-    function activeEvent(){
-      document.querySelectorAll('.collapsible-title').forEach((v, i) => {
-        v.addEventListener('click', e => {
-          const current = e.currentTarget;
-          //current.classList.toggle('active');
-          const parent = current.parentElement;
-          const content = parent.querySelector('.content');
-          
-          parent.classList.toggle('active');
+    <script>
+      const list = document.getElementById("list");
+      document.querySelector(".btn-content").addEventListener("click", (e) => {
+        const li = document.createElement("li");
+        li.classList.add("collapse");
 
-          if (content.style.maxHeight) {
-            content.style.maxHeight = null;
-          } else {
-            content.style.maxHeight = content.scrollHeight + 'px';
-          }
-        })
-      })
-    }
-    
-  </script>
-</body>
+        const title = document.createElement("h1");
+        title.classList.add("collapsible-title");
+        title.innerHTML = "Open Collapsible";
 
+        const content = document.createElement("div");
+        content.classList.add("content");
+
+        const text = document.createElement("p");
+        text.innerHTML =
+          "본문내용<br>본문내용<br>본문내용<br>본문내용<br>본문내용<br>본문내용<br>";
+
+        content.appendChild(text);
+        li.appendChild(title);
+        li.appendChild(content);
+        list.appendChild(li);
+
+        activeEvent();
+      });
+
+      function activeEvent() {
+        document.querySelectorAll(".collapsible-title").forEach((v, i) => {
+          v.addEventListener("click", (e) => {
+            // 클릭된 자기 자신
+            const current = e.currentTarget;
+            // 스스로에게 active클래스에 대한 적용 여부 변경
+            current.classList.toggle("active");
+
+            // 제어할 대상을 탐색
+            const content = current.nextElementSibling;
+
+            // content에 maxHeight속성이 있다면 (혹은 0이 아니라면)
+            if (!content.style.maxHeight == 0) {
+              content.style.maxHeight = 0;
+              console.log("no");
+            } else {
+              content.style.maxHeight = content.scrollHeight + "px";
+              console.log("yes");
+            }
+          });
+        });
+      }
+    </script>
+  </body>
 </html>
