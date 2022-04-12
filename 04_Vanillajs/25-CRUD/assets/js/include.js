@@ -15,4 +15,9 @@ Array.from(document.querySelectorAll('*[data-include]')).map(async (v,i)=>{
     // v의 안에 넣는 것이 아니라 v자체를 교체함
     v.outerHTML = html;
   }
+
+
+  if(include.indexOf('header.html') > -1){
+    // header파일에 js 수정시 작성되어야할 위치
+  }
 })

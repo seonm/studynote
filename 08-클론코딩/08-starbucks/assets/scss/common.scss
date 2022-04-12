@@ -1,0 +1,86 @@
+/* color */
+$gray-555:#555;
+$gray-333:#333;
+$gray-ddd:#ddd;
+$gray-999:#999;
+$babyPowder:#f6f5ef;
+$pink:#d73a7a;
+$green:#1e3932;
+$lightGreen:#00704a;
+$lightGreen2:#00b050;
+$lightGreen3:#64a70b;
+$white:#fff;
+$navy:#1e245c;
+$gold:#b98132;
+$black:#000;
+$jet:#2C2A29;
+
+/*font*/
+$font-12:0.923em; // 13px
+$font-basic:13px; // 13px
+$font-14:1.077em; //15px
+$font-15:1.154em; //15px
+$font-17:1.308em; //17px
+$font-26:2em; //26px
+$font-family:Avenir, 'NanumBarunGothic', '맑은 고딕', Arial, georgia;
+
+/*layout*/
+$wrap1280:1280px;
+$wrap1100:1100px;
+$wrap1080:1080px;
+$wrap960:960px;
+
+/*btn*/
+.btn {
+  background: transparent;
+  border: 2px solid transparent;
+  color: transparent;
+  padding: 8px 24px;
+  border-radius: 5px;
+  font-size: $font-15;
+
+  &.line-pink {
+    color: $pink;
+    border: 2px solid $pink;
+  }
+
+  &.line-white {
+    color: $white;
+    border: 2px solid $white;
+  }
+
+  &.line-gold {
+    color: $gold;
+    border: 2px solid $gold;
+  }
+
+  &.line-navy {
+    color: $navy;
+    border: 2px solid $navy;
+  }
+  &.line-black {
+    color: $black;
+    border: 2px solid $black;
+  }
+
+  &.fill-green {
+    background: $lightGreen;
+    color: #fff;
+  }
+
+  &.round {
+    width: 36px;
+    height: 36px;
+    margin-left: 20px;
+  }
+
+  &.plus {
+    background: url(../img/btn_notice_plus.png) no-repeat center;
+    background-size: auto 100%;
+  }
+
+  &.arrow {
+    background: url(../img/btn_prom_down.png) no-repeat center;
+    background-size: auto 100%;
+  }
+}
