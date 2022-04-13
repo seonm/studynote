@@ -1,32 +1,5 @@
 @import './common.scss';
 
-* {
-  box-sizing: border-box;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-  display: block;
-}
-
-body {
-  font-family: 'NanumBarunGothic', sans-serif;
-  font-size: $font-m;
-  line-height: 1.4;
-  position: relative;
-  &.modal::before {
-    background: rgba(0,0,0,0.4);
-    width: 100%;
-    height: 100%;
-    display: block;
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-}
-
 .header {
   background: $gray-light;
   width: 100%;
@@ -63,10 +36,10 @@ body {
         color: $gray-666;
 
         &:hover {
-          > a{
+          >a {
             color: $navy;
           }
-          
+
           .lnb-2dep {
             transition: all 0.5s;
           }
@@ -106,7 +79,7 @@ body {
               }
             }
 
-            
+
           }
 
         }
@@ -121,38 +94,42 @@ body {
       li {
         width: 17px;
         margin-right: 20px;
-        &.channel{
+
+        &.channel {
           width: 20px;
         }
-        &.search{
-          .search-modal{
+
+        &.search {
+          .search-modal {
             position: absolute;
             left: 0;
             top: 70px;
-            background:$gray-light ;
+            background: $gray-light;
             width: 100%;
             padding: 20px 0;
             visibility: hidden;
             height: 0px;
             transition: height 0.3s;
 
-            &.active{
+            &.active {
               visibility: visible;
               height: 226px;
               transition: height 0.3s;
             }
 
-            .search-modal-wrap{
+            .search-modal-wrap {
               width: $wrap-width;
               margin: 0 auto;
             }
-            .search-input{
+
+            .search-input {
               position: relative;
               width: 572px;
               height: 50px;
               display: flex;
               margin: 0 auto 30px;
-              input{
+
+              input {
                 width: calc(100% - 55px);
                 background-color: #fff;
                 font-size: 1.2em;
@@ -160,8 +137,8 @@ body {
                 color: $gray-666;
                 padding-left: 20px;
               }
-              
-              .input-reset{
+
+              .input-reset {
                 display: none;
                 background: url(../img/btn_reset.webp) no-repeat right top #fff;
                 width: 18px;
@@ -174,42 +151,48 @@ body {
                 border: 0;
                 padding: 0;
                 text-indent: -999px;
-                &.active{
+
+                &.active {
                   display: block;
                 }
               }
-              .btnClose{
+
+              .btnClose {
                 right: -46%;
               }
-              .input-search-i{
+
+              .input-search-i {
                 width: 55px;
                 height: 50px;
                 padding: 0 20px;
-                background:url(../img/btn_search.webp) no-repeat center #fff;
+                background: url(../img/btn_search.webp) no-repeat center #fff;
               }
             }
-            .recom{
+
+            .recom {
               width: 572px;
               margin: 0 auto;
-              padding:0 0 40px 20px;
+              padding: 0 0 40px 20px;
               line-height: 1.6;
-              h1{
+
+              h1 {
                 font-size: 1.2em;
                 font-weight: 700;
                 margin-bottom: 10px;
-                
               }
-              ul{
+
+              ul {
                 display: flex;
                 align-items: center;
-                li{
+
+                li {
                   width: auto;
                   color: $gray-666;
                 }
               }
             }
           }
-          
+
         }
       }
 
@@ -220,7 +203,8 @@ body {
 
         &:hover {
           color: $navy;
-          .arrow{
+
+          .arrow {
             border-color: $navy;
           }
         }
@@ -229,7 +213,8 @@ body {
           .selectbox {
             display: block;
           }
-          .arrow{
+
+          .arrow {
             transform: rotate(-40deg);
             transition: all 0.2s;
           }
@@ -238,6 +223,7 @@ body {
         h1 {
           font-size: $font-l;
           font-weight: 700;
+
           .arrow {
             width: 8px;
             height: 8px;
@@ -264,10 +250,12 @@ body {
 
           li {
             width: 100%;
-            color:#000;
-            &.selected{
+            color: #000;
+
+            &.selected {
               font-weight: 700;
             }
+
             &:hover {
               font-weight: 700;
             }
@@ -275,7 +263,8 @@ body {
         }
       }
     }
-    .btnClose{
+
+    .btnClose {
       height: 100%;
       padding-left: 40px;
       position: absolute;
@@ -284,16 +273,19 @@ body {
       transform: translateY(-50%);
       display: flex;
       align-items: center;
+
       .i-close {
         display: block;
         position: relative;
         width: 20px;
         height: 20px;
-        &:hover{
+
+        &:hover {
           transform: rotate(0.5turn);
           transition: all 0.2s;
           cursor: pointer;
         }
+
         span {
           width: 20px;
           height: 1px;
@@ -310,7 +302,7 @@ body {
             margin-bottom: 0;
           }
         }
-        
+
       }
     }
   }
@@ -362,9 +354,10 @@ body {
     align-items: center;
     font-size: 0.875em;
     margin-bottom: 75px;
+
     a {
-      &:hover{
-        color:$blue;
+      &:hover {
+        color: $blue;
       }
     }
 
@@ -403,6 +396,7 @@ body {
         padding: 14px 12px 10px;
         color: #fff;
         background: $navy;
+
         .sub {
           font-size: $font-ss;
           margin-bottom: 10px;
@@ -424,6 +418,7 @@ body {
 
     li {
       margin-bottom: 50px;
+
       .img {
         background: #f1f1f1;
         height: 400px;
@@ -431,11 +426,12 @@ body {
       }
 
       .title {
-        .category{
+        .category {
           font-size: $font-ss;
           color: $navy;
         }
-        p{
+
+        p {
           font-size: $font-l;
         }
       }
@@ -469,7 +465,6 @@ body {
     width: 544px;
     margin-right: 32px;
   }
-
 }
 
 .section3 {
@@ -488,7 +483,7 @@ body {
       padding: 32px;
       background: url(../img/worldwide-main-instagram-01-8iihs-220315.webp) no-repeat center;
 
-      a{
+      a {
         display: block;
         height: 100%;
       }
@@ -535,7 +530,8 @@ body {
         transition: all 0.5s;
         position: relative;
       }
-      .i-instagram{
+
+      .i-instagram {
         background: url(../img/instagram.png) no-repeat center;
         width: 25px;
         height: 25px;
