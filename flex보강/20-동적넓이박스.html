@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>flex</title>
+  <style>
+    .filter{
+      display: flex;
+      height: 70px;
+      padding-left: 8px;
+      box-shadow: 0 2px 2px 0 rgba(0,0,0,0.1);
+      background: #fff;
+    }
+    .filter_box{
+      flex: 0 1 auto;
+      /* 
+      1. 더커질수 있는가 없는가 1 = 커진다 0 = 컨텐츠값을 유지
+      2. 부모가 작아질때 어떻게 할것인가
+      3. 기본 넓이(basis)
+       */
+      max-width: 300px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      height: 38px;
+      padding: 8px;background: #fff;margin: 16px 8px 0; box-sizing: border-box;border: 1px solid rgba(0,0,0,0.2);
+
+    }
+    .btn_refresh{
+      height: 38px;
+      margin:16px 15px 0 auto;
+      padding: 9px 11px 8px;
+      border: 1px solid rgba(0,0,0,0.15);
+      background-color: #fff;
+      font: 17px;
+      flex: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="filter">
+    <div class="filter_box">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet deleniti fugit aliquid quod labore consequatur sapiente quis totam? Porro consectetur numquam omnis perferendis blanditiis ipsa maiores in qui corrupti! Esse.
+    </div>
+    <div class="filter_box">Lorem ipsum</div>
+    <div class="filter_box">Lorem</div>
+    <div class="filter_box">Lorem ipsum</div>
+    <button type="button" class="btn_refresh">버튼</button>
+  </div>
+</body>
+</html>
