@@ -1,0 +1,37 @@
+.nav{
+  padding-bottom: 20px;
+  border-bottom: 1px solid #f1f1f1;
+  .navLink{
+    position: relative;
+    text-decoration: none;
+    padding: 0 10px;
+    color: inherit;
+    &::after{
+      content: '';
+      width: 1px;
+      height:8px;
+      background:#999;
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      margin:auto 0;
+    }
+   &:last-child::after{
+      width: 0;
+    }
+  }
+}
+table{
+  border:1px solid #dbdbdb;
+  td,th{
+    border:1px solid #dbdbdb;
+    padding: 8px;
+    text-align: center;
+  }
+  td{
+    &:first-child{
+      font-weight: bold;
+    }
+  }
+}
